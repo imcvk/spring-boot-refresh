@@ -1,13 +1,15 @@
-package org.hibernate.Chapter1.crud;
+package org.hibernate.commonutil.crud;
 
+import org.hibernate.Chapter1.pojo.Book;
+import org.hibernate.Chapter1.pojo.Machine;
 import org.hibernate.Chapter1.pojo.Student;
+import org.hibernate.Chapter1.pojo.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -28,6 +30,9 @@ public class DB_Operations {
         configuration.configure("hibernate.cfg.xml");
         // ensure Hibernate picks up our annotated entity
         configuration.addAnnotatedClass(Student.class);
+        configuration.addAnnotatedClass(Machine.class);
+        configuration.addAnnotatedClass(Book.class);
+        configuration.addAnnotatedClass(Teacher.class);
     }
 
     /**

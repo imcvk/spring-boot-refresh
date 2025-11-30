@@ -1,8 +1,10 @@
-package org.hibernate.Chapter1.dummydatagenerator;
+package org.hibernate.commonutil.dummydatagenerator;
 
 import com.github.javafaker.Faker;
-import org.hibernate.Chapter1.pojo.Student;
+import org.hibernate.Chapter1.pojo.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class DummyData {
@@ -42,8 +44,21 @@ public class DummyData {
 
         // Normalize email and names to avoid nulls
         email = Objects.requireNonNullElse(email, "unknown@example.com");
-
-        return new Student(fname, lname, email);
+        Address address = getDummyAddress();
+        Machine machine = getDummyMachine();
+        List<Book> books = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            books.add(new Book(faker.book().title(), faker.book().author()));
+        }
+        List<Teacher> teachers = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            teachers.add(getDummyTeacher());
+        }
+        Student s = new Student(fname, lname, email, address, machine, books, teachers);
+//        teachers.forEach(teacher -> {
+//            teacher.getStudents().add(s);
+//        });
+        return s;
     }
 
     private String safeCapitalize(String s) {
@@ -51,5 +66,31 @@ public class DummyData {
         s = s.trim();
         if (s.length() == 1) return s.toUpperCase();
         return s.substring(0, 1).toUpperCase() + s.substring(1);
+    }
+
+    public Address getDummyAddress() {
+        Faker faker = FAKER.get();
+
+        String city = safeCapitalize(faker.address().city());
+        String state = safeCapitalize(faker.address().state());
+        String country = safeCapitalize(faker.address().country());
+
+        return new Address(city, state, country);
+    }
+
+    public Teacher getDummyTeacher() {
+        Faker faker = FAKER.get();
+        String fname = safeCapitalize(faker.name().firstName());
+        String lname = safeCapitalize(faker.name().lastName());
+        String email = faker.internet().emailAddress();
+        List<Student> students = new ArrayList<>();
+        return new Teacher(fname, lname, email,students);
+    }
+
+    public Machine getDummyMachine() {
+        Faker faker = FAKER.get();
+        String machineName = safeCapitalize("MCN" + faker.number().numberBetween(00001, 99999));
+        String machineType = safeCapitalize("LAPTOP");
+        return new Machine(machineName, machineType);
     }
 }
