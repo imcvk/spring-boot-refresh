@@ -1,7 +1,7 @@
 package org.hibernate.commonutil.dummydatagenerator;
 
 import com.github.javafaker.Faker;
-import org.hibernate.Chapter1.pojo.*;
+import org.hibernate.Chapter1_mapping.pojo.*;
 
 import java.util.ArrayList;
 import java.util.List;

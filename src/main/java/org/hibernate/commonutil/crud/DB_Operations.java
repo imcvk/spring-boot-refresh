@@ -1,9 +1,9 @@
 package org.hibernate.commonutil.crud;
 
-import org.hibernate.Chapter1.pojo.Book;
-import org.hibernate.Chapter1.pojo.Machine;
-import org.hibernate.Chapter1.pojo.Student;
-import org.hibernate.Chapter1.pojo.Teacher;
+import org.hibernate.Chapter1_mapping.pojo.Book;
+import org.hibernate.Chapter1_mapping.pojo.Machine;
+import org.hibernate.Chapter1_mapping.pojo.Student;
+import org.hibernate.Chapter1_mapping.pojo.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -105,6 +105,7 @@ public class DB_Operations {
             return session.find(Student.class, id);
         }
     }
+
     /**
      * Close the shared SessionFactory. After calling this method, getSessionFactory() will create a new one on demand.
      * Call this on application shutdown.
@@ -122,6 +123,7 @@ public class DB_Operations {
             }
         }
     }
+
     public void deleteStudent(Student student) {
         try (Session session = getSession()) {
             session.remove(student);
@@ -129,6 +131,6 @@ public class DB_Operations {
     }
 
     public List<Student> getAllStudents() {
-       return getSession().createQuery("from Student", Student.class).list();
+        return getSession().createQuery("from Student", Student.class).list();
     }
 }

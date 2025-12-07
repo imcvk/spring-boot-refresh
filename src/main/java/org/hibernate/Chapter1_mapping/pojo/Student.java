@@ -1,4 +1,4 @@
-package org.hibernate.Chapter1.pojo;
+package org.hibernate.Chapter1_mapping.pojo;
 
 
 import jakarta.persistence.*;

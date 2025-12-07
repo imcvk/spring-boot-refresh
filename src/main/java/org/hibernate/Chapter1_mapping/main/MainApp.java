@@ -1,10 +1,10 @@
-package org.hibernate.Chapter1.main;
+package org.hibernate.Chapter1_mapping.main;
 
 import org.hibernate.commonutil.crud.DB_Operations;
 import org.hibernate.commonutil.dummydatagenerator.DummyData;
-import org.hibernate.Chapter1.pojo.Book;
-import org.hibernate.Chapter1.pojo.Student;
-import org.hibernate.Chapter1.pojo.Teacher;
+import org.hibernate.Chapter1_mapping.pojo.Book;
+import org.hibernate.Chapter1_mapping.pojo.Student;
+import org.hibernate.Chapter1_mapping.pojo.Teacher;
 
 import java.util.ArrayList;
 
